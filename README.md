@@ -80,9 +80,6 @@ basic_template
 │   │   │   │   └── HomePage.vue
 │   │   ├── App.vue
 │   │   └── main.ts
-├── sql                                                                     # sql文件
-│   └── user_mysql.sql
-│   └── user_pg.sql
 ├── LICENSE                                                                 # 许可证
 └── README.md                                                               # 介绍文件
 ```
@@ -101,9 +98,8 @@ cd basic_template_not_login
 ```
 
 ### 后端启动
-1. 导入`sql`目录下的数据库脚本
-2. 修改`application.yml`配置数据库、Redis 连接信息
-3. 运行`BasicTemplateNotLoginApplication.java`启动类
+1. 修改`application.yml`配置数据库、Redis 连接信息 
+2. 运行`BasicTemplateNotLoginApplication.java`启动类
 
 ### 前端启动
 ```bash
