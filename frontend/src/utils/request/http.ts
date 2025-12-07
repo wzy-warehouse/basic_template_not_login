@@ -1,6 +1,5 @@
 import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
 import configJson from '@/config/config.json'
-import { useUserStore } from '@/stores/useUserStore'
 import { SafetyUtils } from '../safety/SafetyUtils.ts'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
@@ -23,16 +22,9 @@ const httpInstance = axios.create({
 httpInstance.interceptors.request.use(
   async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
     const { url, method } = config
-    const userStore = useUserStore()
 
     // 初始化headers
     config.headers = config.headers || {}
-
-    // Token处理
-    const isNoTokenUrl = configJson.noTokenUrls.some((path) => url?.includes(path))
-    if (!isNoTokenUrl && userStore.token) {
-      config.headers.Authorization = `Bearer ${userStore.token}`
-    }
 
     // 加密处理标记
     const isNoEncryptUrl = configJson.noEncryptUrls.some((path) => url?.includes(path))

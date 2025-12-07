@@ -4,8 +4,17 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/basic_template?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+
+    #mysql配置
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/basic_template?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#    username: basic_template
+#    password: 123456
+#    type: com.alibaba.druid.pool.DruidDataSource
+
+    #postgresql
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/basic_template?characterEncoding=utf8&TimeZone=Asia/Shanghai
     username: basic_template
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
@@ -32,11 +41,6 @@ spring:
         url-pattern: /druid/*
         login-username: admin
         login-password: admin
-  servlet:
-    multipart:
-      max-file-size: 10MB  # 单个文件最大大小
-      max-request-size: 200MB  # 单次请求总文件最大大小
-      enabled: true  # 启用文件上传支持
 
   # redis
   data:
@@ -54,23 +58,6 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-# Sa-Token 配置
-sa-token:
-  # token 名称（同时也是 cookie 名称）
-  token-name: token
-  # token 有效期（单位：秒），-1 代表永久有效
-  timeout: 86400
-  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
-  active-timeout: -1
-  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
-  is-concurrent: false
-  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
-  is-share: false
-  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
-  token-style: random-128
-  # 是否输出操作日志
-  is-log: false
-
 # 打印日志
 logging:
   level:
@@ -85,10 +72,3 @@ logging:
 safety:
   sm2:
     global: 'sm2:keypair:global'  # sm2公钥在redis存储名
-
-# 登录相关配置
-login:
-  remember:
-    redis:
-      key:
-        prefix: 'login:remember:'  # 记住密码在redis中前缀d

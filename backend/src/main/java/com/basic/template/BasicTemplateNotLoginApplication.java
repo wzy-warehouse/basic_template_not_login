@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.basic.template.mapper") // 扫描MyBatis的Mapper接口
-public class BasicTemplateApplication {
+public class BasicTemplateNotLoginApplication {
 
     // 使用非静态变量
     @Value("${server.port}")
@@ -19,10 +19,10 @@ public class BasicTemplateApplication {
 
     public static void main(String[] args) {
         // 启动Spring Boot应用并获取应用上下文
-        var context = SpringApplication.run(BasicTemplateApplication.class, args);
+        var context = SpringApplication.run(BasicTemplateNotLoginApplication.class, args);
 
         // 从上下文中获取当前实例
-        BasicTemplateApplication app = context.getBean(BasicTemplateApplication.class);
+        BasicTemplateNotLoginApplication app = context.getBean(BasicTemplateNotLoginApplication.class);
         System.out.println("后端服务启动成功！访问地址: http://localhost:" + app.port);
     }
 }
