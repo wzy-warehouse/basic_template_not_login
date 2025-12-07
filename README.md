@@ -1,6 +1,6 @@
-# basic_template
+# basic_template_not_login
 开发基本模版
-# basic_template
+# basic_template_not_login
 
 ## 项目介绍
 `basic_template` 是一个包含前后端分离架构的基础开发模板，旨在为快速搭建Web应用提供完整的技术栈支持。项目前端基于Vue 3 + TypeScript + Element Plus构建，后端基于Spring Boot 3 + MyBatis开发，包含用户认证、API通信、数据库交互等基础功能模块，可直接作为中小型Web项目的开发起点。
